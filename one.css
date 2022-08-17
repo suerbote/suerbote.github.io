@@ -40,7 +40,7 @@ body {
     border: 0;
     background-color: rgb(255, 255, 248);
 }
-
+.bblue{background-image: radial-gradient(circle at 50% -200px,#b0e0ff 0,#18a7fd 45%,#3480fd 100%);}
 .br {
     border-radius: 5px;
 }
@@ -99,6 +99,7 @@ a {
     width: 45px;
     height: 45px;
     border-radius: 50px;
+    box-shadow: 0px 0px 5px #eee;
 }
 
 .flex1 {
