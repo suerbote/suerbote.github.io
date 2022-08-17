@@ -1,0 +1,308 @@
+div,
+p,
+pre,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    font-family: -apple-system,
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        "PingFang SC",
+        "Hiragino Sans GB",
+        "WenQuanYi Micro Hei",
+        微软雅黑,
+        "Microsoft Yahei",
+        sans-serif;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+
+.title-rect {
+    background: #2b8dfd;
+    float: left;
+    align-self: center;
+    height: 1.5ch;
+    margin-right: 6px;
+    width: 0.3ch;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: rgb(255, 255, 248);
+}
+
+.br {
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.self-center {
+    align-self: center;
+    justify-self: center;
+}
+
+.items-center {
+    justify-content: center;
+    /*水平居中*/
+    align-items: Center;
+    /*垂直居中*/
+}
+
+.top {
+    list-style: none;
+    align-items: Center;
+    font-size: 20px;
+}
+
+.mar12 {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.tiezi_title {
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.bs {
+    box-shadow: 0px 0px 10px rgba(59, 59, 58, 0.14);
+}
+
+.img {
+    margin-top: 0px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.ma8 {
+    margin: 8px 8px 8px 8px;
+}
+
+a {
+    text-decoration: none;
+    color: hsl(232, 22%, 34%);
+}
+
+.aw:hover {
+    color: white;
+}
+
+.ab {
+    color: hsl(197, 22%, 34%);
+}
+
+.ab:hover {
+    color: rgb(0, 132, 255);
+}
+
+.black {
+    color: hsl(232, 22%, 34%);
+}
+
+ul>li {
+    color: #1891ac;
+}
+
+.bblack {
+    color: hsla(232, 22%, 34%, 0.5);
+}
+
+.reply {
+    background-color: hsla(0, 0%, 0%, 0.01);
+    box-shadow: 0px 8px 10px rgba(61, 61, 61, 0.2);
+    padding: 12px 16px;
+}
+
+.bsn {
+    box-shadow: 0px 8px 10px rgba(59, 59, 58, 0.14);
+}
+
+.white {
+    background-color: hsl(0, 0%, 100%);
+}
+
+.tiezi {
+    margin-bottom: 8px;
+    padding: 12px 16px;
+}
+
+#NeiRong {
+    margin-top: 15px;
+    flex: 1;
+    background-color: #fff;
+    width: 75vw;
+    height: auto;
+}
+
+/* fengexian  */
+.par {
+    margin: 12px;
+    width: 45%;
+    padding: 2px 20px;
+    color: white;
+    background-color: #00ce48;
+    border-radius: 30px /70px;
+    font-size: 22px;
+    margin-left: auto;
+
+}
+
+.ans {
+    margin: 12px;
+    width: 45%;
+    padding: 2px 20px;
+    color: black;
+    background-color: rgb(229, 229, 229);
+    border-radius: 30px /70px;
+    font-size: 22px;
+}
+
+#Head_bar {
+    display: flex;
+}
+
+#Head_bar1 {
+    display: none;
+}
+
+@media (max-width:700px) {
+    .par {
+        font-size: 4vw;
+
+    }
+
+    .ans {
+        font-size: 4vw;
+    }
+
+    #Head_bar {
+        display: none;
+    }
+
+    #Head_bar1 {
+        display: flex;
+    }
+
+    #NeiRong {
+        width: 90vw;
+    }
+}
+
+/*隐藏checked复选框*/
+#sidemenu {
+    display: none;
+}
+
+#sidemenu:checked+aside {
+    /*为被选中的sidemenu后的aside设置属性（紧邻）*/
+    left: 0;
+    /*点击按钮即选中checked后,侧边栏位置变为贴着左边,配合ease-out使用,有渐变滑出的效果*/
+}
+
+#sidemenu:checked~#wrap {
+    /*为被选中的sidemenu后的wrap设置属性（非紧邻）*/
+    padding-left: 220px;
+}
+
+
+aside {
+    /*侧边栏,初始位置为-200px，即隐藏效果*/
+    backdrop-filter: blur(2px);
+    background: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -210px;
+    width: 200px;
+    transition: 0.3s ease-out;
+    box-shadow: 0px 0px 10px rgba(59, 59, 58, 0.45);
+    text-shadow: 2px 2px 2px rgba(59, 59, 58, 0.2);
+    /*动画效果的执行方式是ease-out，即侧边栏滑动效果为渐变式，而不是生硬的突然变化*/
+}
+
+.top-nav {
+    position: fixed;
+    z-index: 10;
+}
+
+h2 {
+    color: hsl(232, 22%, 34%);
+    padding-top: 1em;
+    text-align: center;
+    font-size: 2em;
+}
+
+/*控制侧边栏进出的按钮（外部包裹）*/
+#wrap {
+    backdrop-filter: blur(1px);
+    background: rgba(255, 255, 255, 0.4);
+    margin-left: 1px;
+    padding: 10px;
+    transition: 0.3s ease-out;
+
+}
+
+/*控制侧边栏进出的按钮（内部文字样式）*/
+label {
+    /*控制侧边栏进出的按钮*/
+    box-shadow: 0px 0px 5px rgba(59, 59, 58, 0.25);
+    background: white;
+    border-radius: 70px;
+    color: #111;
+    cursor: pointer;
+    font-size: 1.6em;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    display: inline-block;
+    margin-top: 30px;
+    margin-right: 15px;
+    transition: 0.3s ease-out;
+    align-self: flex-end;
+}
+
+#sideul li {
+    list-style: none;
+    color: hsl(232, 22%, 34%);
+    width: 80%;
+    height: 1.8em;
+    font-size: 1.5em;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.3s ease-out;
+}
+
+#sideul li:hover {
+    width: 110%;
+}
