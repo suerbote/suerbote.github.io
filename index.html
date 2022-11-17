@@ -11,10 +11,32 @@
 
     <script type="text/javascript"
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
-    <script type="text/javascript" src="http://dlippman.imathas.com/asciimathtex/ASCIIMathTeXImg.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" async></script>
+
+    <script type="text/x-mathjax-config;executed=true">
+        window.MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+                displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX", "TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        //下面第三个参数可以不写，默认对整个html内的latex进行翻译
+        window.MathJax.Hub.Queue(["Typeset", MathJax.Hub,document.getElementsByClassName("ck-content")]);
+</script>
 
     <title>苏尔伯特</title>
 </head>
+
+
 
 <body>
     <!-- 顶部栏 -->
@@ -22,7 +44,7 @@
         <div class="flex row">
             <ul class="flex row top">
                 <li class="flex mar12 black items-center"><img src="avatar.webp" alt="p" class="bs img"></li>
-                <li class="flex mar12 items-center"><a href="index.html" style="color:#eee;">苏尔伯特の个人小站</a></li>
+                <li class="flex mar12 items-center"><a href="index.html" style="color:#eee;">苏尔伯特的博客</a></li>
             </ul>
         </div>
     </div>
@@ -56,10 +78,13 @@
         </aside>
         <div style="width: auto; height: auto;overflow: auto;" class="tiezi white bs flex column br">
 
-            <h1 class="black tiezi_title ma15 flex">Hello World!</h1><time class="bblack tiezi_title">2022.7.2 18:29
-                第4次修改</time>
+            <h1 class="black tiezi_title ma15 flex">Hello World!</h1><time class="bblack tiezi_title">2022.11.17 22:11
+                第5次修改</time>
             <p style="font-size: 26px" class="wb ma8 black ma15">
-                Hello(,,･∀･)ﾉ゛<br>
+                Hello(,,･∀･)ﾉ゛ Welcome!<br>您可以给<a target="_blank"
+                    href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=o5KUmpeUl5aSlJfj0tKNwMzO" class="ab">
+                    我的邮箱
+                </a>发邮件哦<br>
                 <iframe
                     src="//player.bilibili.com/player.html?aid=66126928&bvid=BV1X441127nU&cid=114700661&page=1&danmaku=0&high_quality=0"
                     scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
@@ -72,10 +97,10 @@
                 <p class="ma8 black">HELLO HTML5/CSS3/JS!</p>
             </div>
             <div style="width: auto; height: auto;overflow: auto;" class="ma8 bs flex column br reply">
-                <h3 class="ma8 black">你所爱的就是你的生活</h3>
-                <h4 class="ma8 black">陈睿 <time class="bblack">2022.6.19 11:15</time>
+                <h3 class="ma8 black">I=U/R</h3>
+                <h4 class="ma8 black">定职佃主 <time class="bblack">2044.4.44 44:44</time>
                 </h4>
-                <p class="ma8 black">陈睿，你*什么时候*啊</p>
+                <p class="ma8 black">物理秃发课</p>
             </div>
 
         </div><br>
@@ -95,23 +120,31 @@
                 <a href="http://cyberpolice.mps.gov.cn/wfjb/" class="ab">[ 举报单击此处 ]</a>
             </p>
             <div style="width: auto; height: auto;overflow: auto;" class="ma8 bs flex column br reply">
-                <h3 class="ma8 black">我没见过啊</h3>
-                <h4 class="ma8 black">Tourist004 <time class="bblack">2022.6.11 16:24</time>
+                <h3 class="ma8 black">这个网站没有数据库</h3>
+                <h4 class="ma8 black">싸삐 <time class="bblack">2066.6.66 66:66</time>
                 </h4>
-                <p class="ma8 black">三行四列的行列式怎么求</p>
+                <p class="ma8 black">评论都是站长自己编的哈哈</p>
             </div>
         </div>
         <div style="width: auto; height: auto;overflow: auto;" class="tiezi white bs flex column br">
-            <h1 class="black tiezi_title">下面的公式都是真实的</h1><time class="bblack tiezi_title">2022.8.17 14:31</time>
+            <h1 class="black tiezi_title">各种攻势</h1><time class="bblack tiezi_title">2022.9.11 23:30</time>
             <p style="font-size: 24px;font-family: 'Times New Roman', Times, serif;" class="wb ma8 black">
-                ①`\text{基本不等式}`<br><br>
-                `(a+b)/(2)>=sqrt(ab)`
-                `(\text{当且仅当a=b时取=号})`
-            </p>
-            <p style="font-size: 24px;font-family: 'Times New Roman', Times, serif;" class="wb ma8 black">
-                ②`\text{正弦定理}`<br><br>
-                `a/sinA=b/sinB=c/sinC`
-
+                $$\frac{a+b}{2}\ge\sqrt{ab}$$
+                $$$$
+                $$\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}$$
+                $$$$
+                $$\begin{array}{l}
+                \text{对于方程形如：}x^{3}-1 = 0 \\
+                \text{设}\text{:}\omega = \frac{-1+\sqrt{3}i}{2} \\
+                x_{1} = 1,x_{2} = \omega = \frac{-1+\sqrt{3}i}{2} \\
+                x_{3} = \omega ^{2} = \frac{-1-\sqrt{3}i}{2}
+                \end{array}$$
+                $$$$
+                $$\sin \alpha + \sin \beta =2 \sin \frac{\alpha + \beta}{2}\cos \frac{\alpha - \beta}{2}$$
+                $$$$
+                $$F = G{{Mm} \over {{r^2}}}$$
+                $$$$
+                $$\frac{\mathrm{d}}{\mathrm{d}x}\ln(x)=\frac{1}{x}$$
             </p>
         </div><br>
     </div>
