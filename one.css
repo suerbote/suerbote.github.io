@@ -40,7 +40,11 @@ body {
     border: 0;
     background-color: rgb(255, 255, 248);
 }
-.bblue{background-image: radial-gradient(circle at 50% -200px,#b0e0ff 0,#18a7fd 45%,#3480fd 100%);}
+
+.bblue {
+    background-image: radial-gradient(circle at 50% -200px, #b0e0ff 0, #18a7fd 45%, #3480fd 100%);
+}
+
 .br {
     border-radius: 5px;
 }
@@ -49,7 +53,18 @@ a {
     text-decoration: none;
 }
 
+/*黑底白字显现*/
+.shit {
+    color: black;
+    background-color: black;
+    transition: 0.3s ease;
+}
 
+.shit:hover {
+    color: rgb(255, 255, 255);
+}
+
+/*变flex*/
 .flex {
     display: flex;
 }
