@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <style type="text/css">
+        @font-face {
+            font-family: 'Han';
+            src: url("sourcehanR.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: 'HHan';
+            src: url("sourcehanB.otf") format("opentype");
+        }
+
+
+        *,
+        :after,
+        :before {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Han', serif, consolas, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: rgba(0, 0, 0, .85);
+            background-color: rgb(249, 245, 233);
+            font-weight: 100;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .ab {
+            color: rgba(0, 0, 0, .85);
+            transition: ease-in-out 0.5s;
+            padding-left: 0;
+            overflow: hidden;
+        }
+
+        .ab:hover {
+            color: rgb(68, 73, 106);
+            padding-left: 10px;
+        }
+
+        code[class*="language-"],
+        pre[class*="language-"] {
+            color: rgba(0, 0, 0, .85);
+            font-family: Consolas, Arial, Helvetica, sans-serif;
+            direction: ltr;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            line-height: 1.5;
+            tab-size: 4;
+            hyphens: none
+        }
+
+        pre[class*="language-"] {
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto
+        }
+
+
+
+        :not(pre)>code[class*="language-"],
+        pre[class*="language-"] {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
+        }
+
+        :not(pre)>code[class*="language-"] {
+            padding: .1em;
+            border-radius: .3em
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding-left: 10%;padding-right: 10%;">
+        <p></p>
+
+        <p style="text-align: center;"><span>博客集</span></p>
+
+        <p style="text-align: center;">
+            <span>文案/翻译有问题请联系我！祝您浏览愉快！</span>
+        </p>
+        <ol>
+            <li><a href="1.html" class="ab" target="_blank">How to use pointers
+                    in C? Here's the AI's
+                    answer.</a>
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>
