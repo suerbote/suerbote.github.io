@@ -142,10 +142,34 @@
         .token.entity {
             cursor: help
         }
+
+        .fontbutton {
+            margin: 0;
+            padding: 10px;
+            border: 0;
+            align-self: center;
+            flex: auto;
+            color: rgb(249, 245, 233);
+            font-size: 20px;
+            background: rgba(0, 0, 0, .85);
+        }
+
+        .buttonf {
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 0.85;
+
+        }
     </style>
 </head>
 
 <body>
+    <div class="buttonf">
+        <button class="fontbutton" onclick="Font_song()">思源宋体</button>
+        <button class="fontbutton" onclick="Font_har()">鸿蒙黑体</button>
+        <button class="fontbutton" onclick="Font_deh()">得意斜黑</button>
+        <button class="fontbutton" onclick="Font_none()">独选雅黑</button>
+    </div>
     <div style="padding-left: 10%;padding-right: 10%;">
         <p></p>
 
@@ -153,7 +177,10 @@
                 answer</span></p>
 
         <p style="text-align: center;"><span style="font-size: x-large;">如何在C语言中使用指针？这是AI (ChatGPT) 的回答</span></p>
-
+        <p style="text-align: left;">
+            <span style="color: #ff0000;">原文来源：ChatGPT，译者：苏尔伯特（苏文星），若侵权，立删！
+            </span>
+        </p>
         <p style="text-align: left;">
             <span
                 style="color: #00000057;">译者提示：棕色字体表示该词/语段对应的翻译；粉色字体表示该中文翻译可能对于部分读者难以理解或属于网络用语，与现代汉语词义有偏差，须读者注意；蓝色和绿色字体仅供方便读者阅读，无实际意义；【】内的是较为直接的翻译，供读者更好理解原意。
@@ -244,10 +271,8 @@ pointer_name <span class="token operator">=</span> <span class="token operator">
                 style="color: #b48269;">难以修复的</span>错误<span
                 style="color: #a5b95a; font-size: x-喵all;">*译者注:错误也许翻译成bug更好，但还是遵从原文吧*</span>。在您的C语言程序中使用指针前，对指针有充足的把握<span
                 style="color: #b48269;">是十分必要的</span>。</p>
-        <p>&nbsp;</p>
-        <p><span style="font-size: x-喵all;">（作者）：ChatGPT</span></p>
-        <p><span style="font-size: x-喵all;">译者：苏尔伯特（苏文星）</span></p>
     </div>
+    <script text="text/javascript" src="../one.js"></script>
 </body>
 
 </html>

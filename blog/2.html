@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C pointers [W3 SCHOOL]</title>
+
+    <style type="text/css">
+        @font-face {
+            font-family: 'Han';
+            src: url("sourcehanR.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: 'HHan';
+            src: url("sourcehanB.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: 'deyihei';
+            src: url("deyihei.ttf");
+        }
+
+        @font-face {
+            font-family: 'harmory';
+            src: url("harmory.ttf");
+        }
+
+        *,
+        :after,
+        :before {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'harmory', serif, consolas, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: rgba(0, 0, 0, .85);
+            background-color: rgb(249, 245, 233);
+            font-weight: 100;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: inherit
+        }
+
+        code[class*="language-"],
+        pre[class*="language-"] {
+            color: rgba(0, 0, 0, .85);
+            font-family: Consolas, Arial, Helvetica, sans-serif;
+            direction: ltr;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            line-height: 1.5;
+            tab-size: 4;
+            hyphens: none
+        }
+
+        pre[class*="language-"] {
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto
+        }
+
+        :not(pre)>code[class*="language-"],
+        pre[class*="language-"] {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
+        }
+
+        :not(pre)>code[class*="language-"] {
+            padding: .1em;
+            border-radius: .3em
+        }
+
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+            color: slategray
+        }
+
+        .token.punctuation {
+            color: #999
+        }
+
+        .namespace {
+            opacity: .7
+        }
+
+        .token.property,
+        .token.tag,
+        .token.boolean,
+        .token.number,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #905
+        }
+
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #690
+        }
+
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .language-css .token.string,
+        .style .token.string {
+            color: #a67f59;
+            background: hsla(0, 0, 100%, .5)
+        }
+
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword {
+            color: #07a
+        }
+
+        .token.function {
+            color: #dd4a68
+        }
+
+        .token.regex,
+        .token.important,
+        .token.variable {
+            color: #e90
+        }
+
+        .token.important,
+        .token.bold {
+            font-weight: bold
+        }
+
+        .token.italic {
+            font-style: italic
+        }
+
+        .token.entity {
+            cursor: help
+        }
+
+        .fontbutton {
+            margin: 0;
+            padding: 10px;
+            border: 0;
+            align-self: center;
+            flex: auto;
+            color: rgb(249, 245, 233);
+            font-size: 20px;
+            background: rgba(0, 0, 0, .85);
+        }
+
+        .buttonf {
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 0.85;
+
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="buttonf">
+        <button class="fontbutton" onclick="Font_song()">思源宋体</button>
+        <button class="fontbutton" onclick="Font_har()">鸿蒙黑体</button>
+        <button class="fontbutton" onclick="Font_deh()">得意斜黑</button>
+        <button class="fontbutton" onclick="Font_none()">独选雅黑</button>
+    </div>
+
+    <div style="padding-left: 10%;padding-right: 10%;">
+        <p style="text-align: center;"><span style="font-size: x-large;">C Pointer</span></p>
+
+        <p style="text-align: center;"><span style="font-size: x-large;">C语言 指针</span></p>
+
+        <p style="text-align: left;">
+            <span style="color: #ff0000;">原文来源：https://www.w3schools.com/c/c_pointers.php，译者：苏尔伯特（苏文星），若侵权，立删！
+            </span>
+        </p>
+        <p></p>
+        <p style="text-align: left;"><span style="font-size: xx-large;"><strong>Creating Pointers</strong></span></p>
+        <p style="text-align: left;"><strong><span style="font-size: xx-large;">创建指针</span></strong></p>
+        <p><span style="font-size: medium;">You learned from the previous chapter, that we can get the memory address of
+                a
+                variable with the reference operator <span style="color: #ff5050;">&amp;</span>:</span></p>
+        <p><span style="font-size: medium;">通过前面的学习，我们知道了如何使用引用符号 <span style="color: #ff5050;">&amp;</span>
+                来获取一个变量的地址：</span></p>
+        <p><span style="font-size: x-large;">Example 比如</span></p>
+        <pre
+            class=" language-c"><code class=" language-c"><span class="token keyword">int</span> myAge <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">;</span> <span class="token comment">// an int variable 一个整型变量</span><br>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> myAge<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Outputs the value of myAge (43) 输出myAge的值(43)</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>myAge<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs the memory address of myAge(0x7ffe5367e044)输出myAge的内存地址</span></code></pre>
+        <p>In the example above, &amp;myAge is also known as a <strong>pointer.</strong></p>
+        <p>在上面的例子里，&amp;myAge也被称为一个指针。</p>
+        <p>A <strong>pointer</strong> is a variable that stores the memory address of another variable as its value.</p>
+        <p>指针是一种存储 其他变量的内存地址 作为它的值的变量。</p>
+        <p>A <strong>pointer variable points</strong> to a data type (like int) of the same type, and is created with
+            the *
+            operator. The address of the variable you are working with is assigned to the pointer:</p>
+        <p>指针变量指向与之相同数据类型的数据（如 int ），并且指针是通过 * 运算符创建的。</p>
+        <p><span style="font-size: x-large;">Example 例如</span></p>
+        <pre
+            class=" language-c"><code class=" language-c"><span class="token keyword">int</span> myAge <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">;</span>     <span class="token comment">//一个整型变量</span>
+<span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>myAge<span class="token punctuation">;</span>  <span class="token comment">//一个存储着myAge的地址，被称为ptr的指针变量</span>
+        
+<span class="token comment">//输出myAge的值(43)</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> myAge<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">//输出myAge的内存地址</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>myAge<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">//使用该指针输出myAge的内存地址</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <p><span style="font-size: larger;">Example explained 例子解释</span></p>
+        <p><br>Create a pointer variable with the name<span style="color: #ff5050;"> ptr</span>, that <strong>points
+                to</strong> an <span style="color: #ff5050;">int</span> variable (<span
+                style="color: #ff5050;">myAge</span>). Note that the type of the pointer has to match the type of the
+            variable you're working with.</p>
+        <p>创建了一个名为<span style="color: #ff5050;">ptr</span>的指针变量，并指向了一个整型变量（<span
+                style="color: #ff5050;">myAge</span>）。注意！指针的类型必须和指向变量的类型相对应！</p>
+        <p>Use the &amp; operator to store the memory address of the <span style="color: #ff5050;">myAge</span>
+            variable,
+            and assign it to the pointer.</p>
+        <p>Now, <span style="color: #ff5050;">ptr</span> holds the value of<span style="color: #ff5050;"> myAge</span>'s
+            memory address.</p>
+        <p>使用 &amp; 运算符获取<span style="color: #ff5050;">myAge</span>变量的内存地址，并传给指针。</p>
+        <p>现在，<span style="color: #ff5050;">ptr</span> 掌握着<span style="color: #ff5050;">myAge</span>的内存地址。</p>
+        <p>&nbsp;</p>
+        <p><span style="font-size: xx-large;"><strong>Dereference</strong></span></p>
+        <p><span style="font-size: xx-large;"><strong>解引用</strong></span></p>
+        <p><br>In the example above, we used the pointer variable to get the memory address of a variable (used together
+            with the <span style="color: #ff5050;">&amp;</span> <strong>reference</strong> operator).</p>
+        <p>在上面的例子里，我们使用了指针取获取变量的内存地址（跟 &amp; 运算符一起）</p>
+        <p>However, you can also get the value of the variable the pointer points to, by using the * operator (the
+            <strong>dereference</strong> operator):
+        </p>
+        <p>但是，通过 * 运算符（解引用运算符），你也可以获取指针指向变量的值</p>
+        <p><span style="font-size: large;">Example 示例</span></p>
+        <pre
+            class=" language-c"><code class=" language-c"><span class="token keyword">int</span> myAge <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">;</span>     <span class="token comment">// Variable declaration 声明变量</span>
+<span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>myAge<span class="token punctuation">;</span>  <span class="token comment">// Pointer declaration 声明指针</span>
+        
+<span class="token comment">// Reference: Output the memory address of myAge with the pointer (0x7ffe5367e044)</span>
+<span class="token comment">//引用：用指针输出myAge的内存地址</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+<span class="token comment">// Dereference: Output the value of myAge with the pointer (43)</span>
+<span class="token comment">//解引用：用指针输出myAge的值(43)</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <p>Note that the <span style="color: #ff5050;">*</span> sign can be confusing here, as it does two different
+            things
+            in our code:</p>
+        <p>When used in declaration (<span style="color: #ff5050;">int* ptr</span>), it creates a <strong>pointer
+                variable.</strong><br>When not used in declaration, it act as a <strong>dereference operator.</strong>
+        </p>
+        <p>注意，这里 * 的使用可能会让你感到困惑，因为这个符号在我们的代码里有两个含义：</p>
+        <p>当用于声明时，它创建了一个指针变量(<span style="color: #ff5050;">int* ptr</span>)。</p>
+        <p>当不用于声明时，它起到解引用的作用。</p>
+        <p>&nbsp;</p>
+        <p><strong>Good To Know:</strong> There are three ways to declare pointer variables, but the first way is mostly
+            used:</p>
+        <p>博识乃善：你知道声明变量有几种写法吗？有三种，第一种最常用：</p>
+        <pre
+            class=" language-c"><code class=" language-c"><span class="token keyword">int</span><span class="token operator">*</span> myNum<span class="token punctuation">;</span> <span class="token comment">// Most used 最常用</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>myNum<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span> myNum<span class="token punctuation">;</span></code></pre>
+        <p><span style="font-size: x-large;"><strong>Why Should I Learn About Pointers?</strong></span></p>
+        <p><span style="font-size: x-large;"><strong>为啥要学指针？</strong></span></p>
+        <p>Pointers are one of the things that make C stand out from other programming languages, like Python and Java.
+        </p>
+        <p>指针是让C语言在茫茫语海（如Python,Java）中脱颖而出的法宝。</p>
+        <p>This chapter was just a short introduction to Pointers. They are important in C, because they give you the
+            ability to manipulate the data in the computer's memory - this can reduce the code and improve the
+            performance.
+            <strong>However</strong>, pointers must be handled with care, since it is possible to damage data stored in
+            other memory addresses.
+        </p>
+        <p>本章只是对指针的简短介绍。指针在C语言中可重要了！因为它可以赋予你掌控电脑内存里的数据，还可以使代码更简洁高效。<strong>但是！</strong>它也可能损坏存储于其他内存的数据，必须谨慎使用！</p>
+        <p><code></code></p>
+        <p></p>
+    </div>
+    <script text="text/javascript" src="../one.js"></script>
+</body>
+
+</html>
