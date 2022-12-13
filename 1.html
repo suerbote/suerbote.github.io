@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to use pointers in C? Here's the AI's answer</title>
+
+    <style type="text/css">
+        @font-face {
+            font-family: 'Han';
+            src: url("sourcehanR.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: 'HHan';
+            src: url("sourcehanB.otf") format("opentype");
+        }
+
+        *,
+        :after,
+        :before {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Han', serif, consolas, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: rgba(0, 0, 0, .85);
+            background-color: rgb(249, 245, 233);
+            font-weight: 100;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: inherit
+        }
+
+        code[class*="language-"],
+        pre[class*="language-"] {
+            color: rgba(0, 0, 0, .85);
+            font-family: Consolas, Arial, Helvetica, sans-serif;
+            direction: ltr;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            line-height: 1.5;
+            tab-size: 4;
+            hyphens: none
+        }
+
+        pre[class*="language-"] {
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto
+        }
+
+        :not(pre)>code[class*="language-"],
+        pre[class*="language-"] {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
+        }
+
+        :not(pre)>code[class*="language-"] {
+            padding: .1em;
+            border-radius: .3em
+        }
+
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+            color: slategray
+        }
+
+        .token.punctuation {
+            color: #999
+        }
+
+        .namespace {
+            opacity: .7
+        }
+
+        .token.property,
+        .token.tag,
+        .token.boolean,
+        .token.number,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #905
+        }
+
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #690
+        }
+
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .language-css .token.string,
+        .style .token.string {
+            color: #a67f59;
+            background: hsla(0, 0, 100%, .5)
+        }
+
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword {
+            color: #07a
+        }
+
+        .token.function {
+            color: #dd4a68
+        }
+
+        .token.regex,
+        .token.important,
+        .token.variable {
+            color: #e90
+        }
+
+        .token.important,
+        .token.bold {
+            font-weight: bold
+        }
+
+        .token.italic {
+            font-style: italic
+        }
+
+        .token.entity {
+            cursor: help
+        }
+
+        .fontbutton {
+            margin: 0;
+            padding: 10px;
+            border: 0;
+            align-self: center;
+            flex: auto;
+            color: rgb(249, 245, 233);
+            font-size: 20px;
+            height: 3em;
+            background: rgba(0, 0, 0, .85);
+        }
+
+        .buttonf {
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 0.85;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="buttonf">
+        <button class="fontbutton" onclick="Font_song()">思源宋体</button>
+        <button class="fontbutton" onclick="Font_har()">鸿蒙黑体</button>
+        <button class="fontbutton" onclick="Font_deh()">得意斜黑</button>
+        <button class="fontbutton" onclick="Font_none()">Consolas</button>
+    </div>
+    <div style="padding-left: 10%;padding-right: 10%;">
+        <p></p>
+
+        <p style="text-align: center;"><span style="font-size: x-large;">How to use pointers in C? Here's the AI's
+                answer</span></p>
+
+        <p style="text-align: center;"><span style="font-size: x-large;">如何在C语言中使用指针？这是AI (ChatGPT) 的回答</span></p>
+        <p style="text-align: left;">
+            <span style="color: #ff0000;">原文来源：ChatGPT，译者：苏尔伯特（苏文星），若侵权，立删！
+            </span>
+        </p>
+        <p style="text-align: left;">
+            <span
+                style="color: #00000057;">译者提示：棕色字体表示该词/语段对应的翻译；粉色字体表示该中文翻译可能对于部分读者难以理解或属于网络用语，与现代汉语词义有偏差，须读者注意；蓝色和绿色字体仅供方便读者阅读，无实际意义；【】内的是较为直接的翻译，供读者更好理解原意。
+            </span>
+        </p>
+
+        <p>In C, a pointer is a
+            <span style="color: #b48269;">variable
+            </span> that
+            <span style="color: #d76ed2;">holds</span> the
+            <span style="color: #b48269;">memory</span> address of
+            another
+            variable. To use pointers in C, you must understand how memory addresses work and how to<span
+                style="color: #b48269;"> declare</span> and use pointers.
+        </p>
+        <p>在C语言中，指针是一种<span style="color: #d76ed2;">操控</span>其他变量<span style="color: #b48269;">内存</span>地址<span
+                style="color: inherit;">的</span><span style="color: #b48269;">变量</span>。为了熟练掌握指针，您得知道内存是如何工作的，并了解如何<span
+                style="color: #b48269;">声明</span>和使用指针。</p>
+        <p>To declare a pointer, you need to use the <code>*</code> <span style="color: #b48269;">operator</span>
+            when
+            declaring the variable. For example, to declare a pointer to an <span
+                style="color: #50aae6;">int&nbsp;</span><code></code>, you would write:</p>
+        <p>为了声明一个指针变量，您需要使用 * <span style="color: #b48269;">运算符</span>。例如，声明一个&nbsp;<span
+                style="color: #50aae6;">int&nbsp;</span>指针，您应该这么写：</p>
+        <pre class="  language-c"><code class="  language-c"><span class="token keyword">int</span> <span class="token operator">*</span>pointer_name<span class="token punctuation">;</span>​
+<span class="token comment">//数型 *针之名；</span></code></pre>
+        <p>To <span style="color: #b48269;">assign</span> the memory address of a variable to a pointer, you need to
+            use
+            the <code>&amp;</code> operator (<span style="color: #b48269;">known as</span> the "address of"
+            operator)
+            when assigning the value to the pointer. For example:</p>
+        <p>为了告诉指针指向哪块内存地址【为了给指针<span style="color: #b48269;">分配</span>一个变量的内存地址】，您需要使用 &amp; 运算符 （<span
+                style="color: #b48269;">称作</span>“取址”运算符），例如：</p>
+        <pre class="  language-c"><code class="  language-c"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>pointer_name<span class="token punctuation">;</span>
+
+pointer_name <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span>
+<span class="token comment">/*
+数型 天=10；
+数型 *针之名；
+
+针之名=&amp;天；
+*/</span></code></pre>
+        <p>The code <span style="color: #b48269;">above</span> assigns the memory address of the variable<span
+                style="color: #28aa55;"> <strong>x</strong> </span>to the pointer<span style="color: #28aa55;">
+                <strong>pointer_name</strong></span>.</p>
+        <p><span style="color: #b48269;">上面</span>这段代码将&nbsp;<strong><span
+                    style="color: #28aa55;">pointer_name&nbsp;</span></strong>指针指向变量&nbsp;<span
+                style="color: #28aa55;"><strong>x&nbsp;</strong></span>的内存地址。</p>
+        <p>To <span style="color: #b48269;">access</span> the value stored at a memory address, you need to use the
+            <code>*</code> operator (known as the "dereference" operator) when accessing the value through the
+            pointer.
+            For example:
+        </p>
+        <p>为了通过指针<span style="color: #b48269;">读取</span>储存在该内存的值，你得用 * 运算符（称作“解引用”运算符），例如：</p>
+        <pre class="  language-c"><code class="  language-c"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token operator">*</span>pointer_name<span class="token punctuation">;</span>
+pointer_name <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The value of x is %d\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>pointer_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+数型 天=10；
+
+数型 *针之名；
+针之名=&amp;天；
+
+书之（“天之值为%d\n”，*针之名）；
+*/</span></code></pre>
+        <p>The code above will print the value of <span style="color: #28aa55;"><strong>x</strong></span> (10) to
+            the
+            <span style="color: #b48269;">console</span>.
+        </p>
+        <p>上面这段代码将会在<span style="color: #b48269;">控制台</span>输出 <span style="color: #28aa55;"><strong>x</strong></span>
+            的值（也就是10）。</p>
+        <p>Pointers are a <span style="color: #d76ed2;">powerful and fundamental feature</span> of the C language,
+            and
+            they are often used to improve the <span style="color: #b48269;">performance</span> <span
+                style="color: #b48269;">and</span> <span style="color: #b48269;">efficiency</span> of C programs.
+            However, they can also be difficult to understand and can lead to <span
+                style="color: #b48269;">difficult-to-debug</span> errors if <span style="color: #b48269;">not used
+                correctly</span>.<span style="color: #b48269;"> It is important to</span> have a strong
+            understanding of
+            pointers before using them in your C programs.</p>
+        <p>指针是C语言中的<span style="color: #d76ed2;">基本操作</span>之一【指针是C语言的一种<span
+                style="color: #d76ed2;">强大且基础的特点</span>】，并且通常用于提升C语言程序的<span
+                style="color: #b48269;">运行速度和效率</span>。但是，<span style="color: #b48269;">不正确的使用</span>会导致代码难以理解，产生<span
+                style="color: #b48269;">难以修复的</span>错误<span
+                style="color: #a5b95a; font-size: x-喵all;">*译者注:错误也许翻译成bug更好，但还是遵从原文吧*</span>。在您的C语言程序中使用指针前，对指针有充足的把握<span
+                style="color: #b48269;">是十分必要的</span>。</p>
+    </div>
+    <script text="text/javascript" src="../one.js"></script>
+</body>
+
+</html>
